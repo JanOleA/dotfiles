@@ -52,9 +52,9 @@ include ~/.config/sway/config.d/*
 #output 'Samsung Electric Company S34C65xU HNTXB00368' pos 3840 0 res 3440x1440 scale 1.3
 
 
-workspace 1 output 'AU Optronics 0x403D Unknown'
-workspace 2 output 'Samsung Electric Company C27F390 H4ZNB02381' 'AU Optronics 0x403D Unknown'
-workspace 3 output 'Samsung Electric Company S34C65xU HNTXB00368' 'AU Optronics 0x403D Unknown'
+#workspace 1 output 'AU Optronics 0x403D Unknown'
+#workspace 2 output 'Samsung Electric Company C27F390 H4ZNB02381' 'AU Optronics 0x403D Unknown'
+#workspace 3 output 'Samsung Electric Company S34C65xU HNTXB00368' 'AU Optronics 0x403D Unknown'
 
 ### Input configuration
 #
