@@ -26,6 +26,8 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+[ -f /etc/arch-release ] && export WLR_RENDERER=vulkan
+
 export XDG_MENU_PREFIX=plasma-
 export QT_QPA_PLATFORMTHEME=kde
 export PATH="$HOME/.cargo/bin:$PATH"
