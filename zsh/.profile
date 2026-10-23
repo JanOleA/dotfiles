@@ -31,3 +31,6 @@ fi
 export XDG_MENU_PREFIX=plasma-
 export QT_QPA_PLATFORMTHEME=kde
 export PATH="$HOME/.cargo/bin:$PATH"
+export HDR_OUTPUTS="DP-3 HDMI-A-2"
+export SDR_NITS=250
+export HDR_TONEMAP=clip

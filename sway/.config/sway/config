@@ -12,7 +12,12 @@ exec systemctl --user start sway-session.target
 exec env RUST_BACKTRACE=1 RUST_LOG=swayr=debug swayrd > /tmp/swayrd.log 2>&1
 
 # Polkit agent. If DMS shows its own authentication dialogs, remove this line.
-exec sh -c 'for a in /usr/lib/polkit-kde-authentication-agent-1 /usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1; do [ -x "$a" ] && exec "$a"; done'
+exec ~/.local/share/scripts/run-first.sh /usr/lib/polkit-kde-authentication-agent-1 /usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1
+
+exec ~/.local/share/scripts/run-first.sh /usr/lib/pam_kwallet_init /usr/lib/x86_64-linux-gnu/libexec/pam_kwallet_init
+
+#exec sh -c 'for a in /usr/lib/polkit-kde-authentication-agent-1 /usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1; do [ -x "$a" ] && exec "$a"; done'
+#exec sh -c 'for p in /usr/lib/pam_kwallet_init /usr/lib/x86_64-linux-gnu/libexec/pam_kwallet_init; do [ -x "$p" ] && exec "$p"; done'
 
 exec_always autotiling
 # Removed: mako (DMS handles notifications) and swayidle (set idle/lock timeouts in
@@ -257,7 +262,8 @@ set $crust #11111b
 
 bindsym $mod+l exec dms ipc call lock lock
 bindsym $mod+Shift+s exec systemctl suspend
-bindsym Print exec grim -g "$(slurp)" -t png - | wl-copy --type image/png
+bindsym Print exec ~/.local/share/scripts/screenshot.sh
+#bindsym Print exec grim -g "$(slurp)" -t png - | wl-copy --type image/png
 bindsym Mod1+Tab exec swayr switch-to-urgent-or-lru-window
 
 bindsym $mod+Control+Shift+Right move workspace to output right
@@ -267,6 +273,7 @@ bindsym $mod+Control+Shift+Up move workspace to output up
 
 bindsym $mod+m exec $HOME/.local/share/scripts/sway_create_next_workspace.sh
 bindsym $mod+n workspace next
+bindsym $mod+Shift+a exec $HOME/.local/share/scripts/toggle-audio-port.sh
 
 include /etc/sway/config.d/*
 
