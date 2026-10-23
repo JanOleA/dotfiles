@@ -14,7 +14,6 @@ alias eobox12="distrobox enter eoprogs -- /bin/bash"
 alias eobox11="distrobox enter eoprogs11 -- /bin/bash"
 alias eobox10="distrobox enter eoprogs-10 -- /bin/bash"
 alias cat="batcat --tabs 8"
-alias confgen="/home/joa/confgen.sh"
 alias ssh="TERM=xterm-256color ssh"
 
 alias mv="mv -iv"
