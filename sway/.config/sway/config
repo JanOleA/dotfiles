@@ -240,7 +240,7 @@ mode $launch {
     bindsym g exec steam, mode "default"
     bindsym e exec dolphin, mode "default"
     bindsym t exec $term, mode "default"
-    bindsym m exec in.cinny.cinny, mode "default"
+    bindsym m exec in.cinny.Cinny, mode "default"
     bindsym comma exec systemsettings, mode "default"
 
     bindsym Return mode "default"
