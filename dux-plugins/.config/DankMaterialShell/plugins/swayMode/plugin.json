@@ -1,0 +1,15 @@
+{
+    "id": "swayMode",
+    "name": "Sway Mode",
+    "description": "Shows the current Sway binding mode (hidden in the default mode), like swaybar's mode indicator",
+    "version": "1.0.0",
+    "author": "janole",
+    "icon": "keyboard",
+    "type": "widget",
+    "capabilities": ["dankbar-widget"],
+    "component": "./SwayModeWidget.qml",
+    "settings": "./SwayModeSettings.qml",
+    "startupCheck": "./StartupCheck.qml",
+    "dependencies": ["sway"],
+    "permissions": ["settings_read", "settings_write", "process"]
+}

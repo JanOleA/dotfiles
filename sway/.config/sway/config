@@ -202,7 +202,7 @@ default_floating_border pixel 2
 #
 # Resizing containers:
 #
-mode "resize" {
+mode "Resize" {
     bindsym $left resize shrink width 10px
     bindsym $down resize grow height 10px
     bindsym $up resize shrink height 10px
@@ -227,7 +227,27 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+r mode "resize"
+bindsym $mod+r mode "Resize"
+
+# Launch mode: Mod+o, then a letter
+set $launch "Launch: [f]irefox [c]ode [d]iscord [s]ignal [p]assword [g]ames [e]xplorer [t]erminal [m]atrix"
+mode $launch {
+    bindsym f exec firefox, mode "default"
+    bindsym c exec code, mode "default"
+    bindsym d exec discord, mode "default"
+    bindsym s exec signal-desktop, mode "default"
+    bindsym p exec 1password, mode "default"
+    bindsym g exec steam, mode "default"
+    bindsym e exec dolphin, mode "default"
+    bindsym t exec $term, mode "default"
+    bindsym m exec in.cinny.cinny, mode "default"
+    bindsym comma exec systemsettings, mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+o mode $launch, exec dms ipc call toast info "f firefox · c code · d discord · m matrix · s signal · p password · g games · e explorer · t terminal · m cinny"
+
 #
 # Utilities (through DMS, so you get on-screen displays):
 #
