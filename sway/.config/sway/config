@@ -79,7 +79,7 @@ input type:keyboard {
 ### Look
 #
 # Gaps and thin borders without title bars, to match the shell
-gaps inner 8
+gaps inner 4
 default_border pixel 2
 default_floating_border pixel 2
 
@@ -289,15 +289,15 @@ set $mantle #181825
 set $crust #11111b
 
 # SwayFX eye candy
-blur enable
-blur_passes 3
-blur_radius 4
-blur_noise 0.15
-blur_brightness 0.8
-blur_saturation 0.8
-corner_radius 5
-shadows enable
-animation_duration_ms 100
+#blur enable
+#blur_passes 3
+#blur_radius 4
+#blur_noise 0.15
+#blur_brightness 0.8
+#blur_saturation 0.8
+#corner_radius 5
+#shadows enable
+#animation_duration_ms 100
 
 # Custom binds
 bindsym $mod+l exec dms ipc call lock lock

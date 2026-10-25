@@ -1,7 +1,9 @@
 ## Dotfiles
 These are my dotfiles: a plain Sway session with [Dank Material Shell](https://github.com/AvengeMedia/DankMaterialShell)
 (DMS) as bar, launcher, notifications and lock screen, plus KDE apps and zsh. Set up on Arch Linux;
-the configs also handle a few Debian/Ubuntu paths.
+the configs also handle a few Debian/Ubuntu paths. The Sway config is also ready for
+[SwayFX](https://github.com/WillPower3309/swayfx), with its effects commented out (see
+[SwayFX](#swayfx-optional) below).
 
 Each top-level directory is a [GNU Stow](https://www.gnu.org/software/stow/) package that mirrors `~`:
 
@@ -44,6 +46,10 @@ Arch package names. Packages marked (AUR) come from the AUR.
 - `ffmpeg` for HDR screenshot conversion (needs the zscale filter, which Arch's build has)
 - `libpulse` (`pactl`) for the audio port toggle
 - `swayidle` for running `after-resume.sh` after suspend (optional, depends on the machine)
+
+**SwayFX** (optional)
+
+- `swayfx` (AUR), installed instead of `sway`. See [SwayFX](#swayfx-optional).
 
 **Shell**
 
@@ -102,8 +108,11 @@ paru -S --needed stow git sway dms-shell swayr wofi autotiling kitty jq \
    `.stowrc` uses `--no-folding`, so stow links individual files and never turns a
    whole directory such as `~/.config` into a symlink.
 
-5. Make DMS start with the Sway session. The Sway config starts `sway-session.target`,
-   so DMS only needs to be attached to it:
+5. Make DMS start with the Sway session. The Sway config runs
+   `scripts/.local/share/scripts/sway-session-start.sh`, which passes the session
+   environment to systemd, starts `sway-session.target` and restarts DMS (so a quick
+   logout/login doesn't leave DMS crashed or failed). DMS only needs to be attached to
+   the target:
 
    ```sh
    systemctl --user daemon-reload
@@ -134,6 +143,45 @@ paru -S --needed stow git sway dms-shell swayr wofi autotiling kitty jq \
   ```
   exec swayidle -w after-resume '$HOME/.local/share/scripts/after-resume.sh DP-3'
   ```
+
+### SwayFX (optional)
+
+[SwayFX](https://github.com/WillPower3309/swayfx) is a fork of Sway that adds blur,
+rounded corners, shadows and similar effects. It reads the same config, so everything
+else in this repo works unchanged. It doesn't support HDR, so plain Sway is the default
+here and the SwayFX settings are commented out. Plain Sway doesn't know these commands
+and shows config errors if they're enabled.
+
+To switch:
+
+1. Install `swayfx` (AUR). It conflicts with `sway` and replaces it.
+
+2. In `sway/.config/sway/config`, uncomment the block under `# SwayFX eye candy`:
+
+   | Option                                | Effect                                    |
+   |---------------------------------------|-------------------------------------------|
+   | `blur enable`                         | Blur behind transparent windows           |
+   | `blur_passes 3`, `blur_radius 4`      | Blur strength                             |
+   | `blur_noise 0.15`                     | Noise added to the blur                   |
+   | `blur_brightness 0.8`, `blur_saturation 0.8` | Darken and desaturate the blur     |
+   | `corner_radius 5`                     | Rounded window corners                    |
+   | `shadows enable`                      | Drop shadows under windows                |
+   | `animation_duration_ms 100`           | Length of window animations               |
+
+3. Optional extras that go with it:
+   - Make the terminal transparent so the blur shows through, by adding this to
+     `kitty/.config/kitty/kitty.conf`:
+
+     ```
+     background_opacity 0.95
+     ```
+
+   - Wider gaps fit better with rounded corners and shadows: change `gaps inner 4`
+     to `gaps inner 8` in the Sway config.
+
+4. Reload Sway (`$mod+Shift+c`) or log out and back in.
+
+To go back to plain Sway, comment the block out again **before** reinstalling `sway`.
 
 ### Updating
 
