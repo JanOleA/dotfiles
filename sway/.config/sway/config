@@ -6,8 +6,7 @@
 #
 # Export the environment to systemd and start the session target that DMS is bound to
 # (systemctl --user add-wants sway-session.target dms). Don't also `exec dms run`.
-exec dbus-update-activation-environment --systemd --all
-exec systemctl --user start sway-session.target
+exec ~/.local/share/scripts/sway-session-start.sh
 
 exec env RUST_BACKTRACE=1 RUST_LOG=swayr=debug swayrd > /tmp/swayrd.log 2>&1
 
@@ -80,7 +79,7 @@ input type:keyboard {
 ### Look
 #
 # Gaps and thin borders without title bars, to match the shell
-gaps inner 4
+gaps inner 8
 default_border pixel 2
 default_floating_border pixel 2
 
@@ -289,8 +288,18 @@ set $base #1e1e2e
 set $mantle #181825
 set $crust #11111b
 
-# Status bar: removed, DMS provides the bar.
+# SwayFX eye candy
+blur enable
+blur_passes 3
+blur_radius 4
+blur_noise 0.15
+blur_brightness 0.8
+blur_saturation 0.8
+corner_radius 5
+shadows enable
+animation_duration_ms 100
 
+# Custom binds
 bindsym $mod+l exec dms ipc call lock lock
 bindsym $mod+Shift+s exec systemctl suspend
 bindsym Print exec ~/.local/share/scripts/screenshot.sh
@@ -308,12 +317,11 @@ bindsym $mod+Shift+a exec $HOME/.local/share/scripts/toggle-audio-port.sh
 
 include /etc/sway/config.d/*
 
-
-# Colors                border     bg         text       indi
-client.focused          $mauve     $surface2  $text      $maroon
-client.focused_inactive $surface0  $mantle    $text      $maroon
-client.unfocused        $surface0  $surface0  $text      $maroon
-client.urgent           $peach     $surface1  $sapphire  $maroon
+# Colors                border     bg         text       indicator  child_border
+client.focused          $mauve     $surface2  $text      $maroon    $lavender
+client.focused_inactive $surface0  $mantle    $text      $surface0  $surface0
+client.unfocused        $surface0  $surface0  $text      $surface0  $surface0
+client.urgent           $peach     $surface1  $sapphire  $peach     $peach
 
 for_window [app_id="firefox"] border none
 # DMS's own windows (settings etc.) float
