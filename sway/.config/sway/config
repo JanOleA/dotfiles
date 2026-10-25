@@ -246,7 +246,7 @@ mode $launch {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+o mode $launch, exec dms ipc call toast info "f firefox · c code · d discord · m matrix · s signal · p password · g games · e explorer · t terminal · m cinny"
+bindsym $mod+o mode $launch, exec dms ipc call toast info "f firefox · c code · d discord · s signal · p password · g games · e explorer · t terminal · m matrix · , settings"
 
 #
 # Utilities (through DMS, so you get on-screen displays):
