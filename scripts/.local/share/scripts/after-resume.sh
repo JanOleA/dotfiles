@@ -24,4 +24,11 @@ for o in "$@"; do
 done
 
 sleep 2    # let Sway finish moving workspaces back
+
+# DMS is also the lock screen. Restarting it while locked kills the lock client,
+# and Sway then paints every output solid red, so wait until the user unlocks.
+while [ "$(dms ipc call lock isLocked 2>/dev/null)" = true ]; do
+    sleep 1
+done
+
 systemctl --user restart dms
