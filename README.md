@@ -144,6 +144,71 @@ paru -S --needed stow git sway dms-shell swayr wofi autotiling kitty jq \
   exec swayidle -w after-resume '$HOME/.local/share/scripts/after-resume.sh DP-3'
   ```
 
+### Keyboard shortcuts
+
+`$mod` is the Super (Windows) key. `$mod+F1` shows these bindings on screen in DMS.
+
+**Basics and shell**
+
+| Keys                  | Action                                              |
+|-----------------------|-----------------------------------------------------|
+| `$mod+Return`         | Open a terminal (kitty)                             |
+| `$mod+d`              | Launcher (DMS Spotlight)                            |
+| `$mod+o`              | Launch mode (see below)                             |
+| `$mod+Shift+q`        | Close the focused window                            |
+| `$mod+Shift+c`        | Reload the Sway config                              |
+| `$mod+Shift+e`        | Power menu (log out, suspend, reboot, shut down)    |
+| `$mod+l`              | Lock the screen                                     |
+| `$mod+Shift+s`        | Suspend                                             |
+| `$mod+c`              | Control center                                      |
+| `$mod+Shift+n`        | Notifications                                       |
+| `$mod+Shift+v`        | Clipboard history                                   |
+| `$mod+comma`          | DMS settings                                        |
+| `$mod+F1`             | Show key bindings                                   |
+| `Print`               | Region screenshot to the clipboard                  |
+| `$mod+Shift+a`        | Switch audio output between speakers and headphones |
+| `Alt+Tab`             | Switch to the urgent or last used window (swayr)    |
+
+**Windows and layout**
+
+| Keys                           | Action                                        |
+|--------------------------------|-----------------------------------------------|
+| `$mod+Arrow`                   | Move focus                                    |
+| `$mod+Shift+Arrow` / `h/j/k/l` | Move the focused window                       |
+| `$mod+b` / `$mod+v`            | Split horizontally / vertically               |
+| `$mod+s` / `$mod+w` / `$mod+e` | Stacking / tabbed / toggle split layout       |
+| `$mod+f`                       | Fullscreen                                    |
+| `$mod+Shift+space`             | Toggle floating                               |
+| `$mod+space`                   | Switch focus between tiling and floating      |
+| `$mod+a`                       | Focus the parent container                    |
+| `$mod+Shift+minus`             | Move the window to the scratchpad             |
+| `$mod+minus`                   | Show or hide scratchpad windows               |
+| `$mod+r`                       | Resize mode: arrows or `h/j/k/l`, hold Shift for big steps, `Return`/`Escape` to leave |
+| `$mod+drag`                    | Move a window (left button) or resize it (right button) |
+
+**Workspaces and outputs**
+
+| Keys                           | Action                                        |
+|--------------------------------|-----------------------------------------------|
+| `$mod+1`…`$mod+0`              | Go to workspace 1–10                          |
+| `$mod+Shift+1`…`$mod+Shift+0`  | Move the window to workspace 1–10             |
+| `$mod+m`                       | Go to the lowest unused workspace             |
+| `$mod+n`                       | Next workspace                                |
+| `$mod+Ctrl+Shift+Arrow`        | Move the workspace to the next output         |
+
+**Launch mode** (`$mod+o`, then a key; `Return`/`Escape` to cancel)
+
+| Key | App             | Key | App             |
+|-----|-----------------|-----|-----------------|
+| `f` | Firefox         | `g` | Steam           |
+| `c` | VS Code         | `e` | Dolphin         |
+| `d` | Discord         | `t` | Terminal        |
+| `s` | Signal          | `m` | Cinny (Matrix)  |
+| `p` | 1Password       | `,` | System Settings |
+
+Media keys (volume, mic mute, play/pause, next/previous, brightness) go through DMS
+and also work on the lock screen.
+
 ### SwayFX (optional)
 
 [SwayFX](https://github.com/WillPower3309/swayfx) is a fork of Sway that adds blur,
