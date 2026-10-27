@@ -320,6 +320,7 @@ bindsym $mod+Control+Shift+Up move workspace to output up
 bindsym $mod+m exec $HOME/.local/share/scripts/sway_create_next_workspace.sh
 bindsym $mod+n workspace next
 bindsym $mod+Shift+a exec $HOME/.local/share/scripts/toggle-audio-port.sh
+bindsym --locked $mod+Shift+m exec $HOME/.local/share/scripts/toggle-mic-muted.sh
 
 include /etc/sway/config.d/*
 

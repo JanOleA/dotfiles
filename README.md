@@ -44,7 +44,7 @@ Arch package names. Packages marked (AUR) come from the AUR.
 
 - `grim`, `slurp`, `wl-clipboard` for screenshots
 - `ffmpeg` for HDR screenshot conversion (needs the zscale filter, which Arch's build has)
-- `libpulse` (`pactl`) for the audio port toggle
+- `libpulse` (`pactl`) for the audio port toggle and the mic mute toggle
 - `swayidle` for running `after-resume.sh` after suspend (optional, depends on the machine)
 
 **SwayFX** (optional)
@@ -167,6 +167,7 @@ paru -S --needed stow git sway dms-shell swayr wofi autotiling kitty jq \
 | `$mod+F1`             | Show key bindings                                   |
 | `Print`               | Region screenshot to the clipboard                  |
 | `$mod+Shift+a`        | Switch audio output between speakers and headphones |
+| `$mod+Shift+m`        | Mute or unmute the microphone                       |
 | `Alt+Tab`             | Switch to the urgent or last used window (swayr)    |
 
 **Windows and layout**
