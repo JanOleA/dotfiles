@@ -1,7 +1,6 @@
 import QtQuick
 import Quickshell.Io
 import qs.Common
-import qs.Services
 import qs.Widgets
 import qs.Modules.Plugins
 
@@ -16,10 +15,11 @@ PluginComponent {
     // Collapse the whole pill (background included) while in the default mode.
     onActiveChanged: setVisibilityOverride(active)
 
+    // StartupCheck.qml has already confirmed Sway is running. Don't check
+    // CompositorService.isSway here, it may not be set yet at startup.
     Component.onCompleted: {
         setVisibilityOverride(active);
-        if (CompositorService.isSway)
-            subscribeProc.running = true;
+        subscribeProc.running = true;
     }
 
     function handleLine(line) {

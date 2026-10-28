@@ -1,6 +1,6 @@
 ## Dotfiles
-These are my dotfiles: a plain Sway session with [Dank Material Shell](https://github.com/AvengeMedia/DankMaterialShell)
-(DMS) as bar, launcher, notifications and lock screen, plus KDE apps and zsh. Set up on Arch Linux;
+These are my dotfiles: a plain Sway session with [Dux Shell](https://github.com/duxlabs-dev/dux-shell)
+(DMS, formerly Dank Material Shell) as bar, launcher, notifications and lock screen, plus KDE apps and zsh. Set up on Arch Linux;
 the configs also handle a few Debian/Ubuntu paths. The Sway config is also ready for
 [SwayFX](https://github.com/WillPower3309/swayfx), with its effects commented out (see
 [SwayFX](#swayfx-optional) below).
@@ -12,7 +12,7 @@ Each top-level directory is a [GNU Stow](https://www.gnu.org/software/stow/) pac
 | `sway`        | Sway config                                                     |
 | `session`     | `sway-session.target` for systemd and session environment vars  |
 | `scripts`     | Helper scripts in `~/.local/share/scripts`                      |
-| `dux-plugins` | DMS "Sway Mode" bar widget                                      |
+| `dux-plugins` | DMS "Sway Mode" bar widget (in `~/.config/dms/plugins`)         |
 | `swayr`       | swayr window switcher config (uses wofi)                        |
 | `kitty`       | Kitty terminal config, Catppuccin Mocha theme                   |
 | `zsh`         | `.zshrc`, `.profile`, Powerlevel10k config                      |
@@ -26,7 +26,7 @@ Arch package names. Packages marked (AUR) come from the AUR.
 
 - `stow`, `git`
 - `sway` (includes `swaymsg`)
-- `dms-shell`
+- `dux-shell` (2.0 or newer, which reads its config from `~/.config/dms`)
 - `swayr` (AUR), `wofi`
 - `autotiling`
 - `kitty`
@@ -67,7 +67,7 @@ Arch package names. Packages marked (AUR) come from the AUR.
 Install everything in one go (needs an AUR helper such as `paru`):
 
 ```sh
-paru -S --needed stow git sway dms-shell swayr wofi autotiling kitty jq \
+paru -S --needed stow git sway dux-shell swayr wofi autotiling kitty jq \
     polkit-kde-agent kwallet-pam plasma-workspace plasma-integration kdeconnect \
     grim slurp wl-clipboard ffmpeg libpulse zsh bat
 ```
