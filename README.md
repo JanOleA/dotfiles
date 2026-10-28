@@ -123,14 +123,30 @@ paru -S --needed stow git sway dux-shell swayr wofi autotiling kitty jq \
    `~/.config/sway/config.d/`. That directory is included by the Sway config but not
    stored in this repo. Get output names with `swaymsg -t get_outputs`.
 
+   Machine-specific environment variables go in `~/.profile.local`, which
+   `zsh/.profile` sources at the end if it exists. It's also not stored in this repo.
+   See [Machine-specific settings to check](#machine-specific-settings-to-check) for
+   what to put there.
+
 7. Log out and choose **Sway** in your display manager, or run `sway` from a TTY.
    In DMS, enable the **Sway Mode** widget under Settings → Plugins.
 
 ### Machine-specific settings to check
 
-- `zsh/.profile` exports `HDR_OUTPUTS`, `SDR_NITS` and `HDR_TONEMAP` for an HDR
-  monitor. On a machine without HDR, remove `HDR_OUTPUTS`, otherwise screenshots are
-  converted from HDR and come out wrong.
+- `~/.profile.local` holds environment variables that only apply to one machine. Sway
+  reads them when it starts, so log out and back in after changing the file. For
+  example:
+
+  ```sh
+  # Use Sway's Vulkan renderer
+  export WLR_RENDERER=vulkan
+
+  # HDR monitors: screenshot.sh converts screenshots to sRGB when HDR_OUTPUTS is set.
+  # Leave HDR_OUTPUTS out on machines without HDR, or screenshots come out wrong.
+  export HDR_OUTPUTS="DP-3 HDMI-A-2"
+  export SDR_NITS=250       # raise if screenshots look too bright, lower if too dark
+  export HDR_TONEMAP=clip   # or mobius / hable to keep detail in bright highlights
+  ```
 - `mime/.config/mimeapps.list` points to `userapp-Firefox-1EQTU3.desktop`, a file
   that Firefox creates when it is set as the default browser. On a new machine, set
   the default browser again (`xdg-settings set default-web-browser firefox.desktop`)
