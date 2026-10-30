@@ -60,14 +60,14 @@ Arch package names. Packages marked (AUR) come from the AUR.
 
 **Apps used by key bindings and default applications** (optional)
 
-- `firefox`, `dolphin`, `kate`, `gwenview`, `systemsettings`
+- `librewolf`, `dolphin`, `kate`, `gwenview`
 - `visual-studio-code-bin` (AUR), `discord`, `signal-desktop`, `1password` (AUR), `steam`
 - Cinny via Flatpak: `flatpak install flathub in.cinny.Cinny`
 
-Install everything in one go (needs an AUR helper such as `paru`):
+Install everything in one go (needs an AUR helper such as `yay`):
 
 ```sh
-paru -S --needed stow git sway dux-shell swayr wofi autotiling kitty jq \
+yay -S --needed stow git sway dux-shell swayr wofi autotiling kitty jq \
     polkit-kde-agent kwallet-pam plasma-workspace plasma-integration kdeconnect \
     grim slurp wl-clipboard ffmpeg libpulse zsh bat
 ```
@@ -147,10 +147,11 @@ paru -S --needed stow git sway dux-shell swayr wofi autotiling kitty jq \
   export SDR_NITS=250       # raise if screenshots look too bright, lower if too dark
   export HDR_TONEMAP=clip   # or mobius / hable to keep detail in bright highlights
   ```
-- `mime/.config/mimeapps.list` points to `userapp-Firefox-1EQTU3.desktop`, a file
-  that Firefox creates when it is set as the default browser. On a new machine, set
-  the default browser again (`xdg-settings set default-web-browser firefox.desktop`)
-  or edit the file.
+- `mime/.config/mimeapps.list` sets the default applications. Programs that change
+  default applications (System Settings, `xdg-settings`, browsers making themselves
+  the default) replace the symlink in `~/.config` with a regular file, so the change
+  doesn't reach the repo. If `ls -l ~/.config/mimeapps.list` shows a regular file,
+  copy the changes you want into the repo, delete the file and run `stow mime` again.
 - `scripts/.local/share/scripts/after-resume.sh` fixes monitors that come back wrong
   after suspend. It depends on the machine, so it's started from `config.d` and not
   from the main Sway config. To use it, add this with your own output names (needs
@@ -217,11 +218,11 @@ paru -S --needed stow git sway dux-shell swayr wofi autotiling kitty jq \
 
 | Key | App             | Key | App             |
 |-----|-----------------|-----|-----------------|
-| `f` | Firefox         | `g` | Steam           |
+| `l` | LibreWolf       | `g` | Steam           |
 | `c` | VS Code         | `e` | Dolphin         |
 | `d` | Discord         | `t` | Terminal        |
 | `s` | Signal          | `m` | Cinny (Matrix)  |
-| `p` | 1Password       | `,` | System Settings |
+| `p` | 1Password       |     |                 |
 
 Media keys (volume, mic mute, play/pause, next/previous, brightness) go through DMS
 and also work on the lock screen.

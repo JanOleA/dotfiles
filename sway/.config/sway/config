@@ -220,7 +220,7 @@ mode "Resize" {
 bindsym $mod+r mode "Resize"
 
 # Launch mode: Mod+o, then a letter
-set $launch "Launch: [l]librewolf [c]ode [d]iscord [s]ignal [p]assword [g]ames [e]xplorer [t]erminal [m]atrix"
+set $launch "Launch: [l]ibrewolf [c]ode [d]iscord [s]ignal [p]assword [g]ames [e]xplorer [t]erminal [m]atrix"
 mode $launch {
     bindsym l exec librewolf, mode "default"
     bindsym c exec code, mode "default"
@@ -231,12 +231,11 @@ mode $launch {
     bindsym e exec dolphin, mode "default"
     bindsym t exec $term, mode "default"
     bindsym m exec in.cinny.Cinny, mode "default"
-    bindsym comma exec systemsettings, mode "default"
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+o mode $launch, exec dms ipc call toast info "l librewolf · c code · d discord · s signal · p password · g games · e explorer · t terminal · m matrix · , settings"
+bindsym $mod+o mode $launch, exec dms ipc call toast info "l librewolf · c code · d discord · s signal · p password · g games · e explorer · t terminal · m matrix"
 
 #
 # Utilities (through DMS, so you get on-screen displays):
@@ -315,7 +314,7 @@ client.focused_inactive $surface0  $mantle    $text      $surface0  $surface0
 client.unfocused        $surface0  $surface0  $text      $surface0  $surface0
 client.urgent           $peach     $surface1  $sapphire  $peach     $peach
 
-for_window [app_id="firefox"] border none
+for_window [app_id="librewolf"] border none
 # DMS's own windows (settings etc.) float
 for_window [app_id="dev.duxlabs.shell"] floating enable
 
@@ -329,4 +328,4 @@ for_window [app_id="org.kde.polkit-kde-authentication-agent-1"] floating enable
 # Games: allow tearing for lower latency, and don't idle/lock while one is focused
 for_window [class="steam_app_.*"] allow_tearing yes, inhibit_idle focus
 # Don't idle/lock while watching fullscreen video
-for_window [app_id="firefox"] inhibit_idle fullscreen
+for_window [app_id="librewolf"] inhibit_idle fullscreen
