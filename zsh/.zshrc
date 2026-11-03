@@ -13,6 +13,8 @@ alias reboot="/sbin/reboot"
 
 if [[ -f /etc/arch-release ]]; then
     alias cat='bat --tabs 8'
+elif [[ -f /etc/fedora-release ]]; then
+    alias cat='bat --tabs 8'
 else
     alias cat='batcat --tabs 8'
     alias eobox12="distrobox enter eoprogs -- /bin/bash"
