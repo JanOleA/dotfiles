@@ -18,8 +18,6 @@ exec ~/.local/share/scripts/run-first.sh /usr/lib/pam_kwallet_init /usr/lib/x86_
 
 
 exec_always autotiling
-# Removed: mako (DMS handles notifications) and swayidle (set idle/lock timeouts in
-# DMS Settings → Power & battery).
 
 ### Variables
 #
