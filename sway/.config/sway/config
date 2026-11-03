@@ -11,12 +11,11 @@ exec ~/.local/share/scripts/sway-session-start.sh
 exec env RUST_BACKTRACE=1 RUST_LOG=swayr=info swayrd > /tmp/swayrd.log 2>&1
 
 # Polkit agent. If DMS shows its own authentication dialogs, remove this line.
-exec ~/.local/share/scripts/run-first.sh /usr/lib/polkit-kde-authentication-agent-1 /usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1
+exec ~/.local/share/scripts/run-first.sh /usr/lib/polkit-kde-authentication-agent-1 /usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1 /usr/libexec/kf6/polkit-kde-authentication-agent-1
 
-exec ~/.local/share/scripts/run-first.sh /usr/lib/pam_kwallet_init /usr/lib/x86_64-linux-gnu/libexec/pam_kwallet_init
+# kwallet
+exec ~/.local/share/scripts/run-first.sh /usr/lib/pam_kwallet_init /usr/lib/x86_64-linux-gnu/libexec/pam_kwallet_init /usr/libexec/pam_kwallet_init
 
-#exec sh -c 'for a in /usr/lib/polkit-kde-authentication-agent-1 /usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1; do [ -x "$a" ] && exec "$a"; done'
-#exec sh -c 'for p in /usr/lib/pam_kwallet_init /usr/lib/x86_64-linux-gnu/libexec/pam_kwallet_init; do [ -x "$p" ] && exec "$p"; done'
 
 exec_always autotiling
 # Removed: mako (DMS handles notifications) and swayidle (set idle/lock timeouts in
